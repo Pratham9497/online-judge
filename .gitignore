@@ -19,6 +19,11 @@
 # misc
 .DS_Store
 *.pem
+**/.dockerignore
+**/*.yaml
+**/Dockerfile
+**/*.Docker.md
+
 
 # debug
 npm-debug.log*

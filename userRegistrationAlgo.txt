@@ -1,0 +1,9 @@
+if userExistsByEmail:
+    if userEmail.isVerified:
+        success: false (do nothing)
+    else:
+        Update the user with provided details
+        Save the updated user
+else:
+    Create the user with provided details
+    Save this new user
