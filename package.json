@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "yum update -y && amazon-linux-extras install -y java-openjdk11 && yum install -y gcc-c++ python3",
+    "prebuild": "yum update -y && yum install -y gcc-c++ java-17-openjdk python3",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
