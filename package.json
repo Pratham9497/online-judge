@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "apt-get update && apt-get install -y g++ openjdk-11-jdk python3",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
