@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "prebuild": "yum update -y && yum install -y gcc-c++ python3 && yum install -y java-11-amazon-corretto",
+    "postinstall": "yum update -y && yum install -y gcc-c++ python3 java-11-amazon-corretto",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
