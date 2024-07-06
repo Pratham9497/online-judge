@@ -55,6 +55,7 @@ export const authOptions: NextAuthOptions = {
                 token.username = user.username
                 token.isVerified = user.isVerified
                 token.isAdmin = user.isAdmin
+                token.isSuperAdmin = user.isSuperAdmin
             }
             return token
         },
@@ -64,6 +65,7 @@ export const authOptions: NextAuthOptions = {
                 session.user.isVerified = token.isVerified
                 session.user.username = token.username
                 session.user.isAdmin = token.isAdmin
+                session.user.isSuperAdmin = token.isSuperAdmin
             }
             return session
         },

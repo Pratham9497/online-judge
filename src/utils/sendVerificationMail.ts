@@ -14,9 +14,11 @@ export async function sendVerificationEmail(
             subject: 'CodeMonks | Verification Code',
             react: VerificationEmail({ username, otp: verifyCode }),
         });
-        if(emailResp.error){
-            throw Error(emailResp.error.message)
-        }
+
+        // Can uncomment after adding resend email facility
+        // if(emailResp.error){
+        //     throw Error(emailResp.error.message)
+        // }
         return {
             success: true,
             message: "Verification email sent successfully"

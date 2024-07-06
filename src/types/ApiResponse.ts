@@ -11,4 +11,5 @@ export interface ApiResponse {
     executionTime?: number
     memoryUsage?: number
     user?: User
+    admins?: Array<User>
 }

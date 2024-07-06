@@ -76,6 +76,7 @@ export interface User extends Document {
     email: string
     password: string
     isAdmin: boolean
+    isSuperAdmin: boolean
     verifyCode: string
     verifyCodeExpiry: Date
     isVerified: boolean
@@ -109,6 +110,10 @@ const UserSchema: Schema<User> = new Schema({
         required: [true, "Please provide password"],
     },
     isAdmin: {
+        type: Boolean,
+        default: false,
+    },
+    isSuperAdmin: {
         type: Boolean,
         default: false,
     },

@@ -4,16 +4,11 @@
 import { ColumnDef } from "@tanstack/react-table"
 import Link from "next/link"
 import { FaTableList } from "react-icons/fa6"
-import pyIcon from '/python.svg'
-import cppIcon from '/cpp.svg'
-import javaIcon from '/java.svg'
-import jsIcon from '/javascript.svg'
-import tsIcon from '/typescript.svg'
 import Image from "next/image"
 import { getIndianTime } from "@/utils/getIndianTime"
 import { ArrowUpDown, SortAsc } from "lucide-react"
 import { Button } from "./Button"
-import { Submission } from "@/models/User"
+import { Submission, User } from "@/models/User"
 import { Problem } from "@/models/Problem"
 
 export const problemsColumns: ColumnDef<Problem>[] = [
@@ -223,5 +218,34 @@ export const allSubmissionsColumns: ColumnDef<Submission>[] = [
             const submissionTime: string = getIndianTime(row.getValue("submissionTime"))
             return <div className="text-gray-600">{submissionTime}</div>
         },
+    },
+]
+
+export const adminColumns: ColumnDef<User>[] = [
+    //we can set normal fields like this
+    {
+        accessorKey: "firstname",
+        header: "S.No.",
+        cell: ({ row }) => {
+            const id = row.index + 1
+            return <div className="hover:text-[blue] hover:underline cursor-pointer">{id}</div>
+        },
+    },
+    {
+        accessorKey: "lastname",
+        header: "Name",
+        cell: ({row}) => {
+            const fname = row.getValue("firstname")
+            const lname = row.getValue("lastname")
+            return <div>{fname + " " + lname}</div>
+        }
+    },
+    {
+        accessorKey: "username",
+        header: "Username",
+    },
+    {
+        accessorKey: "email",
+        header: "Email",
     },
 ]
