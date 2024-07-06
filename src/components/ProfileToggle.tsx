@@ -41,9 +41,6 @@ const ProfileToggle = ({username}: {username: string | undefined}) => {
                         <Link href={`/u/${username}`}>My Profile</Link>
                     </li>
                     <li className="px-4 py-2 hover:text-white-200 cursor-pointer">
-                        <Link href="/edit-profile">Edit Profile</Link>
-                    </li>
-                    <li className="px-4 py-2 hover:text-white-200 cursor-pointer">
                         <button onClick={() => {signOut()}}>Logout</button>
                     </li>
                 </ul>
