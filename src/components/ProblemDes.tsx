@@ -56,9 +56,9 @@ type Props = {
 type Language = 'javascript' | 'typescript' | 'java' | 'cpp' | 'python'
 
 const ProblemDes = ({ problem, author, tab }: Props) => {
-    const [code, setCode] = useState('')
+    const [code, setCode] = useState('/*For java, write class name as Hello. Use Ctrl + Up Arrow key to increase font size and Ctrl + Down Arrow key to decrease font size*/')
 
-    const [language, setLanguage] = useState<Language>('javascript');
+    const [language, setLanguage] = useState<Language>('cpp');
     const [fontSize, setFontSize] = useState(14);
     const [output, setOutput] = useState<string | undefined>(undefined)
     const [isCompilingOrSubmitting, setIsCompilingOrSubmitting] = useState(false)
@@ -71,7 +71,7 @@ const ProblemDes = ({ problem, author, tab }: Props) => {
         try {
             setIsCompilingOrSubmitting(true)
             setSubmitted(true)
-            const ext = language === 'python' ? 'py' : language === 'java' ? 'java' : language === 'cpp' ? 'cpp' : language === 'javascript' ? 'js' : 'ts'
+            const ext = language === 'python' ? 'py' : language === 'java' ? 'java' : 'cpp'
             const resp = await axios.post(`/api/problems/${problem.id}/submit`, {
                 code,
                 ext
@@ -99,7 +99,7 @@ const ProblemDes = ({ problem, author, tab }: Props) => {
         try {
             setIsCompilingOrSubmitting(true)
             setSubmitted(false)
-            const ext = language === 'python' ? 'py' : language === 'java' ? 'java' : language === 'cpp' ? 'cpp' : language === 'javascript' ? 'js' : 'ts'
+            const ext = language === 'python' ? 'py' : language === 'java' ? 'java' : 'cpp'
             const resp = await axios.post(`/api/problems/${problem.id}/run`, {
                 input,
                 code,
@@ -282,8 +282,6 @@ const ProblemDes = ({ problem, author, tab }: Props) => {
                                             <SelectContent>
                                                 <SelectGroup>
                                                     <SelectLabel>Language</SelectLabel>
-                                                    <SelectItem value="javascript">JavaScript</SelectItem>
-                                                    <SelectItem value="typescript">TypeScript</SelectItem>
                                                     <SelectItem value="python">Python</SelectItem>
                                                     <SelectItem value="cpp">C++</SelectItem>
                                                     <SelectItem value="java">Java</SelectItem>
