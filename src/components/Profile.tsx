@@ -19,7 +19,6 @@ const Profile = ({ profile }: Props) => {
             try {
                 const resp = await axios.get(`/api/users/${profile.username}/submissions`)
                 setSubmissions(resp.data.submissions)
-                console.log(submissions)
             } catch (error) {
                 const axiosError = error as AxiosError<ApiResponse>
                 const errorMessage = axiosError.response?.data.message
@@ -36,19 +35,19 @@ const Profile = ({ profile }: Props) => {
     }, [])
     return (
         <div className='w-full h-full flex flex-col gap-20 py-10'>
-            <div className='w-full h-full flex flex-col gap-5'>
+            <div className='w-full h-full flex flex-col gap-8'>
                 <h1 className='heading text-purple'>
                     Profile Details
                 </h1>
-                <div className='w-full h-full flex items-center justify-center text-2xl gap-20 px-10 py-2'>
-                    <div className='flex flex-col justify-start items-start'>
-                        <div className='font-semibold'>First Name : <span className='text-purple'>{profile.firstname}</span></div>
+                <div className='w-full h-full flex md:flex-row flex-col items-center justify-center text-2xl md:gap-20 gap-5 px-10 py-2'>
+                    <div className='flex flex-col justify-center items-start gap-2'>
+                        {/* <div className='font-semibold'>First Name : <span className='text-purple'>{profile.firstname}</span></div>
                         <div className='font-semibold'>Username : <span className='text-purple'>{profile.username}</span></div>
+                        <div className='font-semibold'>Problems Solved : <span className='bg-blue-400 px-2 rounded-lg'>{profile.solvedProblems.length}</span></div> */}
+                        <div className='font-semibold'>Name : <span className='text-purple'>{profile.firstname + " " + profile.lastname}</span></div>
+                        <div className='font-semibold'>Username : <span className='text-purple'>{profile.username}</span></div>
+                        <div className='font-semibold '>Email : <span className='text-purple'>{profile.email}</span></div>
                         <div className='font-semibold'>Problems Solved : <span className='bg-blue-400 px-2 rounded-lg'>{profile.solvedProblems.length}</span></div>
-                    </div>
-                    <div className='flex flex-col justify-center items-start'>
-                        <div className='font-semibold'>Last Name : <span className='text-purple'>{profile.lastname}</span></div>
-                        <div className='font-semibold'>Email Id : <span className='text-purple'>{profile.email}</span></div>
                         <div className='font-semibold'>Total Submissions : <span className='bg-blue-400 px-2 rounded-lg'>{profile.submissions.length}</span></div>
                     </div>
                 </div>

@@ -2,24 +2,6 @@ import { Metadata } from 'next';
 import Image from 'next/image'
 import React from 'react'
 
-// export async function generateMetadata({ params: { postId } }: Props) {
-
-//     const posts = getSortedPostsData()
-
-//     const post:BlogPost | undefined = posts.find(post => post.id===postId)
-
-//     if(!post){
-//         return {
-//             title: 'Post Not Found'
-//         }
-//     }
-
-//     return {
-//         title: post.title
-//     }
-
-// }
-
 export const metadata: Metadata = {
     title: "About CodeMonks",
     description: "This is the about page of CodeMonks",
@@ -78,11 +60,11 @@ const About = () => {
                                     width={150}
                                     height={150}
                                     alt='CEO'
-                                    className='rounded-full'
+                                    className='rounded-full max-sm:w-24 max-sm:h-24'
                                 />
                                 <div className='flex flex-col justify-center items-center'>
-                                    <p className='italic text-2xl'>Pratham Shalya</p>
-                                    <p className='text-purple font-bold'>CEO</p>
+                                    <p className='italic sm:text-2xl text-lg'>Pratham Shalya</p>
+                                    <p className='text-purple font-bold max-sm:text-base'>CEO</p>
                                 </div>
                             </div>
 
@@ -92,11 +74,11 @@ const About = () => {
                                     width={150}
                                     height={150}
                                     alt='CEO'
-                                    className='rounded-full'
+                                    className='rounded-full max-sm:w-24 max-sm:h-24'
                                 />
                                 <div className='flex flex-col justify-center items-center'>
-                                    <p className='text-2xl italic'>Vikas Shalya</p>
-                                    <p className='text-purple font-bold'>CMO</p>
+                                    <p className='sm:text-2xl text-lg italic'>Vikas Shalya</p>
+                                    <p className='text-purple font-bold max-sm:text-base'>CMO</p>
                                 </div>
                             </div>
                         </div>

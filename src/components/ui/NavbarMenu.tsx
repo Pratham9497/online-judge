@@ -25,32 +25,8 @@ export const MenuItem = ({
         transition={{ duration: 0.3 }}
         className="text-black dark:text-white"
       >
-        <Link href={href} className="cursor-pointer hover:opacity-[0.8]">{item}</Link>
+        <Link href={href} className="cursor-pointer hover:opacity-[0.8] lg:text-lg md:text-base text-sm">{item}</Link>
       </motion.p>
-      {/* {active !== null && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85, y: 10 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={transition}
-        >
-          {active === item && (
-            <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4">
-              <motion.div
-                transition={transition}
-                layoutId="active" // layoutId ensures smooth animation
-                className="bg-none backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
-              >
-                <motion.div
-                  layout // layout ensures smooth animation
-                  className="w-max h-full p-4"
-                >
-                  {children}
-                </motion.div>
-              </motion.div>
-            </div>
-          )}
-        </motion.div>
-      )} */}
     </div>
   );
 };
@@ -62,13 +38,12 @@ export const Menu = ({
 }) => {
   return (
     <nav
-      className="relative w-full rounded-full border-[2px] dark:border-white/[0.2] bg-black-100 shadow-input flex justify-between space-x-4 px-6 py-4 items-center"
+      className="relative w-full rounded-full border-[2px] dark:border-white/[0.2] bg-black-100 shadow-input flex justify-between space-x-4 md:px-6 md:py-4 px-4 py-[10px] items-center"
     >
-      <div className="text-purple xl:text-2xl lg:text-xl text-lg drop-shadow-lg max-w-1/4 font-bold">
+      <div className="text-purple xl:text-2xl lg:text-xl md:text-lg text-base drop-shadow-lg max-w-1/4 font-bold">
         CODEMONKS
       </div>
-      <div className="flex flex-wrap justify-center xl:gap-6 gap-3 items-center w-3/4 font-semibold">
-
+      <div className="flex flex-wrap justify-end xl:gap-6 md:gap-3 gap-2 items-center w-3/4 font-semibold">
         {children}
       </div>
       

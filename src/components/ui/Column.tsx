@@ -243,6 +243,10 @@ export const adminColumns: ColumnDef<User>[] = [
     {
         accessorKey: "username",
         header: "Username",
+        cell: ({row}) => {
+            const uname = row.getValue("username") as string
+            return <div><Link href={`/u/${uname}`} className="hover:text-purple hover:underline">{uname}</Link></div>
+        }
     },
     {
         accessorKey: "email",

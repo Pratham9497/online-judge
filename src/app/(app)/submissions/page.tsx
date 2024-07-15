@@ -16,7 +16,6 @@ const Submissions = () => {
             try {
                 const resp = await axios.get(`/api/problems/submissions`)
                 setSubmissions(resp.data.submissions)
-                console.log(submissions)
             } catch (error) {
                 const axiosError = error as AxiosError<ApiResponse>
                 const errorMessage = axiosError.response?.data.message

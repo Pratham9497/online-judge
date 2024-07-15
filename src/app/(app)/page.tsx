@@ -85,7 +85,7 @@ export default function Home() {
       <Hero />
       <div className='w-full h-full flex flex-col justify-center items-center py-8'>
         <h1 className='heading text-purple'>Our Admins</h1>
-        <div className='w-full h-full max-w-5xl py-10'>
+        <div className='w-full h-full max-w-5xl px-4 py-10'>
           <DataTable columns={columns} isLoading={isLoading} data={admins} allowFilter={false} />
         </div>
         {session?.user.isSuperAdmin &&
