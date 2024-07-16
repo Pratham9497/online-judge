@@ -41,7 +41,7 @@ export const Menu = ({
       className="relative w-full rounded-full border-[2px] dark:border-white/[0.2] bg-black-100 shadow-input flex justify-between space-x-4 md:px-6 md:py-4 px-4 py-[10px] items-center"
     >
       <div className="text-purple xl:text-2xl lg:text-xl md:text-lg text-base drop-shadow-lg max-w-1/4 font-bold">
-        CODEMONKS
+        <Link href="/">CODEMONKS</Link>
       </div>
       <div className="flex flex-wrap justify-end xl:gap-6 md:gap-3 gap-2 items-center w-3/4 font-semibold">
         {children}

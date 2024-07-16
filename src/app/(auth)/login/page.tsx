@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import Link from 'next/link'
 import { useToast } from "@/components/ui/use-toast"
-import { useRouter } from 'next/navigation'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
@@ -18,7 +17,6 @@ import { signIn } from 'next-auth/react'
 const SignIn = () => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const { toast } = useToast()
-    const router = useRouter()
 
     // zod implementation
     const form = useForm<z.infer<typeof signInSchema>>({
@@ -46,11 +44,7 @@ const SignIn = () => {
         }
         console.log(res)
         if(res?.url) {
-            toast({
-                title: "Success",
-                description: "Logged in successfully"
-            })
-            router.replace('/')
+            window.location.replace('/')
         }
     }
 
