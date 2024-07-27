@@ -31,7 +31,7 @@ const ProfileToggle = ({username}: {username: string | undefined}) => {
                 </span>
             </span>
             {isOpen && (
-                <ul className="absolute top-10 bg-black-200 -right-36 mt-2 w-48 border border-gray-200 rounded-md shadow-lg z-10">
+                <ul className="absolute top-10 bg-black-200 -right-[50%] mt-2 border border-gray-200 rounded-md shadow-lg z-10">
                     <li className='px-4 py-2 flex flex-col'>
                         <div className=' italic'>Hey</div>
                         <div className='text-purple'>{username}</div>

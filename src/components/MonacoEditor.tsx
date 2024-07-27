@@ -21,8 +21,8 @@ const MonacoEditor = ({ value, onChange, language, onMount, fontSize }: Props) =
             }}
             onMount={onMount}
             theme='vs-dark'
-            className='overflow-y-auto scroll-auto'
-
+            className='w-full h-full'
+            width="100%"
         />
     )
 }
