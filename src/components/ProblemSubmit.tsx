@@ -16,6 +16,8 @@ import { ApiResponse } from '@/types/ApiResponse';
 import { toast } from './ui/use-toast';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 type Language = 'javascript' | 'typescript' | 'java' | 'cpp' | 'python'
 
@@ -34,8 +36,15 @@ const ProblemSubmit = ({probId, initInput}: Props) => {
     const [isCompilingOrSubmitting, setIsCompilingOrSubmitting] = useState(false)
     const [input, setInput] = useState(initInput)
     const [submitted, setSubmitted] = useState(false)
+    const {data: session} = useSession()
+    const router = useRouter()
 
     const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
+        if(!session || !session.user){
+            router.push('/login')
+            return;
+        }
+        router.push('#output')
         try {
             setIsCompilingOrSubmitting(true)
             setSubmitted(true)
@@ -64,6 +73,11 @@ const ProblemSubmit = ({probId, initInput}: Props) => {
     }
 
     const handleCompile = async (event: React.MouseEvent<HTMLButtonElement>) => {
+        if(!session || !session.user){
+            router.push('/login')
+            return;
+        }
+        router.push('#output')
         try {
             setIsCompilingOrSubmitting(true)
             setSubmitted(false)
@@ -173,18 +187,18 @@ const ProblemSubmit = ({probId, initInput}: Props) => {
             </ScrollArea>
 
             <div className='w-full md:h-[10%] py-3 flex items-center justify-evenly'>
-                <Link href="#output"><button className="p-[3px] relative" onClick={handleCompile} disabled={isCompilingOrSubmitting}>
+                <button className="p-[3px] relative" onClick={handleCompile} disabled={isCompilingOrSubmitting}>
                     <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-700 rounded-lg" />
                     <div className="sm:px-8 px-6 py-1 bg-black-200 rounded-[6px] relative group transition duration-200 text-white hover:bg-transparent">
                         Run Code
                     </div>
-                </button></Link>
-                <Link href="#output"><button className="p-[3px] relative" onClick={handleSubmit} disabled={isCompilingOrSubmitting}>
+                </button>
+                <button className="p-[3px] relative" onClick={handleSubmit} disabled={isCompilingOrSubmitting}>
                     <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 rounded-lg" />
                     <div className="sm:px-8 px-6 py-1  bg-black-200 rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
                         Submit
                     </div>
-                </button></Link>
+                </button>
             </div>
         </div>
     )

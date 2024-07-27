@@ -7,8 +7,6 @@ import { getToken } from 'next-auth/jwt'
 export async function middleware(request: NextRequest) {
     const token = await getToken({req: request})
     const url = request.nextUrl
-    const problemRegex = /^\/problem\/\d+$/;
-    // console.log(token)
 
     if((!token || !token.isAdmin) && url.pathname.startsWith('/problem/add')) {
       return NextResponse.redirect(new URL('/problem', request.url))
@@ -22,13 +20,6 @@ export async function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL('/', request.url))
     }
 
-    if(!token && 
-      (problemRegex.test(url.pathname) ||
-      url.pathname.startsWith('/submissions'))
-    ) {
-        return NextResponse.redirect(new URL('/login', request.url))
-    }
-
   return NextResponse.next()
 }
  
@@ -38,7 +29,6 @@ export const config = {
     '/login',
     '/signup',
     '/verify/:path*',
-    '/problem/:path*',
     '/submissions',
   ],
 }

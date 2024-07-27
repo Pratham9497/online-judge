@@ -44,7 +44,7 @@ const SignIn = () => {
         }
         console.log(res)
         if(res?.url) {
-            window.location.replace('/')
+            window.history.back();
         }
     }
 

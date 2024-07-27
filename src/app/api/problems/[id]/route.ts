@@ -2,17 +2,8 @@ import UserModel from "@/models/User";
 import ProblemModel, { Problem } from "@/models/Problem";
 import dbConnect from "@/lib/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../auth/[...nextauth]/options";
 
 export async function GET (request: NextRequest, {params: {id}}: {params: {id: string}}) {
-    const session = await getServerSession(authOptions)
-    if(!session || !session.user){
-        return NextResponse.json({
-            success: false,
-            message: "Not Authenticated"
-        }, { status: 402 })
-    }
     await dbConnect()
     
     try {
