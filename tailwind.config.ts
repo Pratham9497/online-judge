@@ -25,6 +25,12 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        'dark-gradient-1': 'linear-gradient(135deg, #0a0a23, #141414, #0a0a23)',
+        'dark-gradient-2': 'linear-gradient(135deg, #1a1a2e, #000000)',
+        'dark-gradient-3': 'linear-gradient(135deg, #1a1a2e, #0a0a0a)',
+        'dark-gradient-4': 'linear-gradient(135deg, #2e2e2e, #1b0037, #000000)',
+      },
       gradientColorStops: {
         'purple-500': '#a855f7',
       },

@@ -15,6 +15,7 @@ import { ApiResponse } from '@/types/ApiResponse';
 import { toast } from './ui/use-toast';
 import Link from 'next/link';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
+import { useSession } from "next-auth/react"
 
 type Props = {
     problem: {
@@ -38,6 +39,7 @@ const ProblemDetails = ({ problem, author, tab }: Props) => {
     const ratingCol = problem.rating <= 1000 ? "#03fc07" : problem.rating <= 1200 ? "#a9fc03" : problem.rating <= 1400 ? "#f0ff4a" : problem.rating <= 1600 ? "#fc6203" : "#fc0303";
     const [isLoading, setIsLoading] = useState(true)
     const [submissions, setSubmissions] = useState([])
+    const {data: session} = useSession()
 
     const handleSubmissionClick = useCallback(async () => {
         setIsLoading(true)
@@ -60,9 +62,9 @@ const ProblemDetails = ({ problem, author, tab }: Props) => {
     return (
         <ScrollArea className="shadcn-scrollbar h-full rounded-md border p-4">
             <Tabs defaultValue={tab || "problem"} className="w-full">
-                <TabsList className="grid w-full grid-cols-3">
+                <TabsList className={`grid w-full ${(session && session.user) ? 'grid-cols-3' : 'grid-cols-2'}`}>
                     <TabsTrigger value="problem" className="text-xs sm:text-sm md:text-xs lg:text-sm">Problem</TabsTrigger>
-                    <TabsTrigger onClick={handleSubmissionClick} value="submissions" className="text-xs sm:text-sm md:text-xs lg:text-sm">Submissions</TabsTrigger>
+                    {session && session.user && <TabsTrigger onClick={handleSubmissionClick} value="submissions" className="text-xs sm:text-sm md:text-xs lg:text-sm">Submissions</TabsTrigger>}
                     <TabsTrigger value="editorial" className="text-xs sm:text-sm md:text-xs lg:text-sm">Editorial</TabsTrigger>
                 </TabsList>
                 <TabsContent value="problem">
@@ -151,7 +153,7 @@ const ProblemDetails = ({ problem, author, tab }: Props) => {
                 </TabsContent>
                 <TabsContent value="editorial">
                     <div
-                        className={`text-lg py-2 px-3 my-2 bg-black-300 border-[2px] border-black-200 rounded-lg flex flex-col justify-start items-left gap-3 text-justify`}
+                        className={`text-lg py-2 px-3 my-2  border-[2px] border-black-200 rounded-lg flex flex-col justify-start items-left gap-3 text-justify`}
                     >{problem.editorial.split('\n').map((line, idx) => (
                         <div key={idx} dangerouslySetInnerHTML={{ __html: line }} />
                     ))}</div>

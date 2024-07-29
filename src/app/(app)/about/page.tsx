@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const About = () => {
     return (
         <div className='px-[5%] pb-[4%] w-full h-full text-xl'>
-            <div className='bg-black-200 w-full h-full flex flex-col gap-10 justify-center items-center p-[5%] rounded-lg'>
+            <div className='w-full h-full flex flex-col gap-10 justify-center items-center p-[5%] rounded-lg'>
                 <h1 className='heading text-purple'>
                     About Us
                 </h1>
