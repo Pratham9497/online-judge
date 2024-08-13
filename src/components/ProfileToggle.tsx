@@ -30,19 +30,22 @@ const ProfileToggle = ({username}: {username: string | undefined}) => {
                     {username ? username[0].toUpperCase() : ""}
                 </span>
             </span>
-            <ul className={`absolute top-10 min-w-32 bg-black-200 -right-[50%] mt-2 border border-gray-200 rounded-md shadow-lg z-10 ${isOpen ? 'animate-slide-down' : 'animate-slide-up'}`}>
-                <li className='px-4 py-2 flex flex-col'>
-                    <div className=' italic'>Hey</div>
-                    <div className='text-purple'>{username}</div>
-                </li>
-                <div className="border-t border-gray-200 my-1"></div>
-                <li className="px-4 py-2 hover:text-white-200 cursor-pointer">
-                    <Link href={`/u/${username}`}>My Profile</Link>
-                </li>
-                <li className="px-4 py-2 hover:text-white-200 cursor-pointer">
-                    <button onClick={() => {signOut()}}>Logout</button>
-                </li>
-            </ul>
+            {
+                isOpen && 
+                <ul className={`absolute top-10 min-w-32 bg-black-200 -right-[50%] mt-2 border border-gray-200 rounded-md shadow-lg z-10 ${isOpen ? 'animate-slide-down' : 'animate-slide-up'}`}>
+                    <li className='px-4 py-2 flex flex-col'>
+                        <div className=' italic'>Hey</div>
+                        <div className='text-purple text-lg'>{username}</div>
+                    </li>
+                    <div className="border-t border-gray-200 my-1"></div>
+                    <li className="px-4 py-2 hover:text-white-200 cursor-pointer">
+                        <Link href={`/u/${username}`}>My Profile</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:text-white-200 cursor-pointer">
+                        <button onClick={() => {signOut()}}>Logout</button>
+                    </li>
+                </ul>
+            }
         </div>
     );
 };
