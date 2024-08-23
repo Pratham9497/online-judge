@@ -16,9 +16,18 @@ import { Loader2, LoaderPinwheel } from 'lucide-react'
 import { addProblemSchema } from '@/schemas/addProblemSchema'
 import { Textarea } from '@/components/ui/textarea'
 import useTextFormatting from '@/hooks/useTextFormatting'
-import { Metadata } from 'next'
+import RichTextEditor from '@/components/RichTextEditor'
+import { Testcase } from '@/models/Problem'
 
-const initialFormValues = {
+const initialFormValues: {
+    title: string
+    statement: string
+    constraints: string
+    sampleTestcases: Testcase[]
+    judgeTestcases: Testcase[]
+    rating: string
+    editorial: string
+} = {
     title: '',
     statement: '',
     constraints: '',
@@ -66,7 +75,7 @@ const ProblemAdd = () => {
                     setIsCheckingTitle(false)
                 }
             }
-            else{
+            else {
                 setTitleMessage('Problem Title should not be empty')
                 setTitleStatus(false)
             }
@@ -110,6 +119,31 @@ const ProblemAdd = () => {
             ...prevValues,
             [type]: prevValues[type].filter((_, i) => i !== index),
         }));
+    };
+
+    const handleFileUpload = (
+        event: React.ChangeEvent<HTMLInputElement>,
+        type: 'input' | 'expectedOutput',
+        index: number,
+        testCaseType: 'sampleTestcases' | 'judgeTestcases'
+    ) => {
+        const file = event.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                const text = reader.result as string;
+                form.setValue(`${testCaseType}.${index}.${type}`, text);
+                setFormValues((prevValues) => {
+                    const updatedTestCases = [...prevValues[testCaseType]];
+                    updatedTestCases[index][type] = text;
+                    return {
+                        ...prevValues,
+                        [testCaseType]: updatedTestCases,
+                    };
+                });
+            };
+            reader.readAsText(file);
+        }
     };
 
     return (
@@ -170,10 +204,10 @@ const ProblemAdd = () => {
                                 <FormItem>
                                     <FormLabel>Problem Statement</FormLabel>
                                     <FormControl>
-                                        <Textarea placeholder="Add Problem Statement" disabled={isSubmitting}
-                                            {...field}
-                                            className=' resize-none formatted-text'
-                                            contentEditable="true"
+                                        <RichTextEditor
+                                            value={field.value}
+                                            onChange={field.onChange}
+                                            disabled={isSubmitting}
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -187,9 +221,10 @@ const ProblemAdd = () => {
                                 <FormItem>
                                     <FormLabel>Constraints</FormLabel>
                                     <FormControl>
-                                        <Textarea placeholder="Add constraints" disabled={isSubmitting}
-                                            {...field}
-                                            className='resize-none formatted-text'
+                                        <RichTextEditor
+                                            value={field.value}
+                                            onChange={field.onChange}
+                                            disabled={isSubmitting}
                                         />
                                     </FormControl>
 
@@ -206,9 +241,10 @@ const ProblemAdd = () => {
                                 <FormItem>
                                     <FormLabel>Editorial</FormLabel>
                                     <FormControl>
-                                        <Textarea placeholder="Explain your solution" disabled={isSubmitting}
-                                            {...field}
-                                            className='resize-none formatted-text'
+                                        <RichTextEditor
+                                            value={field.value}
+                                            onChange={field.onChange}
+                                            disabled={isSubmitting}
                                         />
                                     </FormControl>
 
@@ -235,6 +271,14 @@ const ProblemAdd = () => {
                                                         className='resize-none'
                                                     />
                                                 </FormControl>
+                                                <Input
+                                                    type="file"
+                                                    accept='.txt'
+                                                    title='uploadTestcase'
+                                                    onChange={(e) => handleFileUpload(e, 'input', index, 'sampleTestcases')}
+                                                    disabled={isSubmitting}
+                                                    className=' w-fit text-[12px] cursor-pointer'
+                                                />
 
                                                 <FormMessage />
                                             </FormItem>
@@ -253,7 +297,15 @@ const ProblemAdd = () => {
                                                         className='resize-none'
                                                     />
                                                 </FormControl>
+                                                <Input
+                                                    type="file"
+                                                    title='uploadTestcase'
+                                                    onChange={(e) => handleFileUpload(e, 'expectedOutput', index, 'sampleTestcases')}
+                                                    disabled={isSubmitting}
+                                                    accept='.txt'
+                                                    className=' w-fit text-[12px] cursor-pointer'
 
+                                                />
                                                 <FormMessage />
                                             </FormItem>
                                         )}
@@ -283,7 +335,14 @@ const ProblemAdd = () => {
                                                         className='resize-none'
                                                     />
                                                 </FormControl>
-
+                                                <Input
+                                                    type="file"
+                                                    title='uploadTestcase'
+                                                    onChange={(e) => handleFileUpload(e, 'input', index, 'judgeTestcases')}
+                                                    disabled={isSubmitting}
+                                                    accept='.txt'
+                                                    className=' w-fit text-[12px] cursor-pointer'
+                                                />
                                                 <FormMessage />
                                             </FormItem>
                                         )}
@@ -301,7 +360,14 @@ const ProblemAdd = () => {
                                                         className='resize-none'
                                                     />
                                                 </FormControl>
-
+                                                <Input
+                                                    type="file"
+                                                    title='uploadTestcase'
+                                                    onChange={(e) => handleFileUpload(e, 'expectedOutput', index, 'judgeTestcases')}
+                                                    disabled={isSubmitting}
+                                                    accept='.txt'
+                                                    className=' w-fit text-[12px] cursor-pointer'
+                                                />
                                                 <FormMessage />
                                             </FormItem>
                                         )}

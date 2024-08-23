@@ -81,19 +81,22 @@ const ProblemDetails = ({ problem, author, tab }: Props) => {
                         <div className='flex flex-col items-left justify-center gap-2'>
                             <h2 className='text-2xl font-semibold'>Problem Statement: </h2>
                             <div className='text-base flex flex-col items-left justify-center gap-3'>
-                                {problem.statement.split('\n').map((line, idx) => (
-                                    <div key={idx} className='leading-6' dangerouslySetInnerHTML={{ __html: line }} />
-                                ))}
+                                {/* {problem.statement.split('\n').map((line, idx) => ( */}
+                                    <div 
+                                        // key={idx} 
+                                        className='leading-6 tiptap' 
+                                        dangerouslySetInnerHTML={{ __html: problem.statement }} />
+                                {/* ))} */}
                             </div>
                         </div>
                         <div className='flex flex-col items-left justify-center gap-2'>
                             <h2 className='text-2xl font-semibold'>Constraints: </h2>
                             <div className='text-base'>
-                                <ul className=' list-disc flex flex-col items-left justify-center gap-1 pl-2'>
-                                    {problem.constraints.split('\n').map((line, idx) => (
-                                        <li key={idx} className='border-[2px] border-slate-600 bg-black-200 text-white-100 leading-6 rounded-xl px-2 w-fit' dangerouslySetInnerHTML={{ __html: line }} />
-                                    ))}
-                                </ul>
+                                {/* <ul className=' list-disc flex flex-col items-left justify-center gap-1 pl-2'> */}
+                                    {/* {problem.constraints.split('\n').map((line, idx) => ( */}
+                                        <div className=' tiptap' dangerouslySetInnerHTML={{ __html: problem.constraints }} />
+                                    {/* ))} */}
+                                {/* </ul> */}
                             </div>
                         </div>
                         <div className='flex flex-col items-left justify-center gap-2'>
@@ -154,9 +157,11 @@ const ProblemDetails = ({ problem, author, tab }: Props) => {
                 <TabsContent value="editorial">
                     <div
                         className={`text-lg py-2 px-3 my-2  border-[2px] border-black-200 rounded-lg flex flex-col justify-start items-left gap-3 text-justify`}
-                    >{problem.editorial.split('\n').map((line, idx) => (
-                        <div key={idx} dangerouslySetInnerHTML={{ __html: line }} />
-                    ))}</div>
+                    >
+                        {/* {problem.editorial.split('\n').map((line, idx) => ( */}
+                            <div className="tiptap" dangerouslySetInnerHTML={{ __html: problem.editorial }} />
+                        {/* ))} */}
+                    </div>
                 </TabsContent>
             </Tabs>
             <ScrollBar orientation="horizontal" />
