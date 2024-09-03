@@ -38,7 +38,7 @@ export const Menu = ({
 }) => {
   return (
     <nav
-      className="relative w-full rounded-full border-[2px] dark:border-white/[0.2] bg-dark-gradient-3 shadow-input flex justify-between space-x-4 md:px-6 md:py-4 px-4 py-[10px] items-center"
+      className="relative h-[9vh] w-full bg-[#1b1919] shadow-input flex justify-between space-x-4 md:px-6 md:py-3 px-4 py-2 items-center"
     >
       <div className="text-purple xl:text-2xl lg:text-xl md:text-lg text-base drop-shadow-lg max-w-1/4 font-bold">
         <Link href="/">CODEMONKS</Link>

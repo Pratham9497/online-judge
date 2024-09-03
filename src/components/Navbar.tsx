@@ -31,10 +31,10 @@ export default function Navbar({ className }: { className?: string }) {
 
   return (
     <div
-      className={cn("fixed top-8 inset-x-0 lg:mx-[10%] mx-[5%] z-50", className)}
+      className={cn("fixed top-0 inset-x-0 z-50", className)}
     >
       <Menu>
-        {!windowSize.width || windowSize.width > 640 ? (
+        {!windowSize.width || windowSize.width > 600 ? (
           <>
             <MenuItem href="/" item="Home" />
             <MenuItem href="/about" item={`About`} />
@@ -63,8 +63,8 @@ export default function Navbar({ className }: { className?: string }) {
         ) : (
           <>
             <DropdownMenu>
-              <DropdownMenuTrigger><Button variant="outline"><FaBars className="text-lg" /></Button></DropdownMenuTrigger>
-              <DropdownMenuContent>
+              <DropdownMenuTrigger><Button className="bg-[#201e1e] border-[3px] border-[#2c2b2b] hover:bg-[#2c2b2b]" variant="outline"><FaBars className="text-lg" /></Button></DropdownMenuTrigger>
+              <DropdownMenuContent className="dark:bg-[#1a1919]">
                 {
                   status === "loading" ? <></> : session ? (
                     <>

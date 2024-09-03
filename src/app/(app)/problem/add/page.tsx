@@ -148,7 +148,7 @@ const ProblemAdd = () => {
 
     return (
         <div className='flex justify-center items-center min-h-screen'>
-            <div className='w-full p-8 m-2 space-y-8 bg-black-200 rounded-lg shadow-md'>
+            <div className='w-full p-8 space-y-8 bg-[#151414] rounded-lg shadow-md'>
                 <div className='text-center'>
                     <h1 className='text-4xl font-extrabold tracking-tight lg:text-5xl mb-6'>
                         <span className=' text-purple'>Admin</span> Page
@@ -172,6 +172,7 @@ const ProblemAdd = () => {
                                                 field.onChange(e)
                                                 debounced(e.target.value)
                                             }}
+                                            className='bg-[#1b1a1a] border-none'
                                         />
                                     </FormControl>
                                     {isCheckingTitle && <LoaderPinwheel className='animate-spin' />}
@@ -189,7 +190,7 @@ const ProblemAdd = () => {
                                     <FormControl>
                                         <Input placeholder="Rating e.g., 1000" disabled={isSubmitting}
                                             {...field}
-                                            className='resize-none'
+                                            className='bg-[#1b1a1a] border-none resize-none'
                                         />
                                     </FormControl>
 
@@ -257,7 +258,7 @@ const ProblemAdd = () => {
                         <div>
 
                             {formValues.sampleTestcases.map((testcase, index) => (
-                                <div key={index} className='p-4 bg-black-200 flex flex-col gap-2'>
+                                <div key={index} className='p-4 bg-[#1b1a1a] flex flex-col gap-2'>
                                     <FormField
                                         key={index}
                                         name={`sampleTestcases.${index}.input`}
@@ -268,7 +269,7 @@ const ProblemAdd = () => {
                                                 <FormControl>
                                                     <Textarea placeholder={`Sample Testcase ${index + 1} Input`} disabled={isSubmitting}
                                                         {...field}
-                                                        className='resize-none'
+                                                        className='resize-none dark:bg-[#272525]'
                                                     />
                                                 </FormControl>
                                                 <Input
@@ -277,7 +278,7 @@ const ProblemAdd = () => {
                                                     title='uploadTestcase'
                                                     onChange={(e) => handleFileUpload(e, 'input', index, 'sampleTestcases')}
                                                     disabled={isSubmitting}
-                                                    className=' w-fit text-[12px] cursor-pointer'
+                                                    className=' w-fit text-[12px] cursor-pointer dark:bg-[#3f3d3d] border-none'
                                                 />
 
                                                 <FormMessage />
@@ -294,7 +295,7 @@ const ProblemAdd = () => {
                                                 <FormControl>
                                                     <Textarea placeholder={`Sample Testcase ${index + 1} Output`} disabled={isSubmitting}
                                                         {...field}
-                                                        className='resize-none'
+                                                        className='resize-none dark:bg-[#272525]'
                                                     />
                                                 </FormControl>
                                                 <Input
@@ -303,7 +304,7 @@ const ProblemAdd = () => {
                                                     onChange={(e) => handleFileUpload(e, 'expectedOutput', index, 'sampleTestcases')}
                                                     disabled={isSubmitting}
                                                     accept='.txt'
-                                                    className=' w-fit text-[12px] cursor-pointer'
+                                                    className=' w-fit text-[12px] cursor-pointer dark:bg-[#3f3d3d] border-none'
 
                                                 />
                                                 <FormMessage />
@@ -321,7 +322,7 @@ const ProblemAdd = () => {
                         <div>
 
                             {formValues.judgeTestcases.map((testcase, index) => (
-                                <div className='p-4 bg-black-200 flex flex-col gap-2' key={index}>
+                                <div className='p-4 bg-[#1b1a1a] flex flex-col gap-2' key={index}>
                                     <FormField
                                         key={index}
                                         name={`judgeTestcases.${index}.input`}
@@ -332,7 +333,7 @@ const ProblemAdd = () => {
                                                 <FormControl>
                                                     <Textarea placeholder={`Judge Testcase ${index + 1} Input`} disabled={isSubmitting}
                                                         {...field}
-                                                        className='resize-none'
+                                                        className='resize-none dark:bg-[#272525]'
                                                     />
                                                 </FormControl>
                                                 <Input
@@ -341,7 +342,7 @@ const ProblemAdd = () => {
                                                     onChange={(e) => handleFileUpload(e, 'input', index, 'judgeTestcases')}
                                                     disabled={isSubmitting}
                                                     accept='.txt'
-                                                    className=' w-fit text-[12px] cursor-pointer'
+                                                    className=' w-fit text-[12px] cursor-pointer dark:bg-[#3f3d3d] border-none'
                                                 />
                                                 <FormMessage />
                                             </FormItem>
@@ -357,7 +358,7 @@ const ProblemAdd = () => {
                                                 <FormControl>
                                                     <Textarea placeholder={`Judge Testcase ${index + 1} Output`} disabled={isSubmitting}
                                                         {...field}
-                                                        className='resize-none'
+                                                        className='resize-none dark:bg-[#272525]'
                                                     />
                                                 </FormControl>
                                                 <Input
@@ -366,7 +367,7 @@ const ProblemAdd = () => {
                                                     onChange={(e) => handleFileUpload(e, 'expectedOutput', index, 'judgeTestcases')}
                                                     disabled={isSubmitting}
                                                     accept='.txt'
-                                                    className=' w-fit text-[12px] cursor-pointer'
+                                                    className=' w-fit text-[12px] cursor-pointer dark:bg-[#3f3d3d] border-none'
                                                 />
                                                 <FormMessage />
                                             </FormItem>

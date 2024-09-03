@@ -124,12 +124,12 @@ const ProblemSubmit = ({probId, initInput}: Props) => {
     }
 
     return (
-        <div className='w-full h-full flex flex-col justify-center'>
-            <ScrollArea className="shadcn-scrollbar h-full rounded-md border p-4">
+        <div className='w-full h-full flex flex-col justify-center gap-[6px]'>
+            <ScrollArea className="border-[#1b1a1a] shadcn-scrollbar h-full rounded-md border-2 p-4 bg-[#131313]">
 
                 <div className='h-full rounded-xl flex flex-col items-left justify-center gap-1'>
 
-                    <div className='pl-1 pt-1'>
+                    <div>
                         <Select disabled={isCompilingOrSubmitting} onValueChange={(value: Language) => setLanguage(value)} value={language}>
                             <SelectTrigger className="w-24 h-8 mb-2">
                                 <SelectValue placeholder="Select a Language" />
@@ -161,13 +161,13 @@ const ProblemSubmit = ({probId, initInput}: Props) => {
                     </div>
                     <textarea
                         title='Insert Input'
-                        className='text-xl py-2 px-3 bg-black-300 border-[2px] border-black-200 text-slate-500 rounded-lg leading-8 w-full h-36 resize-none'
+                        className='text-lg py-2 px-3 bg-[#212121] text-[#aeaeae] rounded-lg leading-8 w-full h-36 resize-none'
                         value={input}
                         onChange={(event) => setInput(event.target.value)}
                         disabled={isCompilingOrSubmitting}
                     />
                 </div>
-                <div className='flex flex-col items-left justify-start gap-2 w-full py-3'>
+                {output && <div className='flex flex-col items-left justify-start gap-2 w-full py-3'>
                     <div className='text-lg' id='output'>
                         Output:
                     </div>
@@ -176,26 +176,26 @@ const ProblemSubmit = ({probId, initInput}: Props) => {
                         <>
                             {<div
                                 title='Check output'
-                                className={`text-xl overflow-y-auto py-2 px-3 bg-black-300 border-[2px] border-black-200 rounded-lg max-h-60 min-h-12 ${submitted && (output === "Compilation Error" ? " text-yellow-400 font-semibold" : output === "Accepted" ? " text-green-600 font-semibold" : output === "Not Accepted" || output === "Internal Server Error" ? "text-rose-600" : "text-white")}`}
+                                className={`text-xl overflow-y-auto py-2 px-3 bg-[#212121] rounded-lg max-h-60 min-h-12 ${submitted && (output === "Compilation Error" ? " text-yellow-400 font-semibold" : output === "Accepted" ? " text-green-600 font-semibold" : output === "Not Accepted" || output === "Internal Server Error" ? "text-rose-600" : "text-white")}`}
                             >{output?.split('\n').map((line, idx) => (
                                 <div key={idx}>
                                     {`${line}`}
                                 </div>
                             ))}</div>}
                         </>}
-                </div>
+                </div>}
             </ScrollArea>
 
-            <div className='w-full md:h-[10%] py-3 flex items-center justify-evenly'>
-                <button className="p-[3px] relative" onClick={handleCompile} disabled={isCompilingOrSubmitting}>
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-700 rounded-lg" />
-                    <div className="sm:px-8 px-6 py-1 bg-black-200 rounded-[6px] relative group transition duration-200 text-white hover:bg-transparent">
+            <div className='border-2 border-[#1b1a1a] rounded-md w-full md:h-[6%] flex items-center justify-center'>
+                <button className="w-1/2 h-full" onClick={handleCompile} disabled={isCompilingOrSubmitting}>
+                    {/* <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-700 rounded-lg" /> */}
+                    <div className=" border-r-2 border-[#1b1a1a] rounded-l-sm w-full h-full text-center hover:bg-[#131313] transition duration-200 text-white bg-[#1b1a1a] flex items-center justify-center">
                         Run Code
                     </div>
                 </button>
-                <button className="p-[3px] relative" onClick={handleSubmit} disabled={isCompilingOrSubmitting}>
-                    <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 rounded-lg" />
-                    <div className="sm:px-8 px-6 py-1  bg-black-200 rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
+                <button className="w-1/2 h-full" onClick={handleSubmit} disabled={isCompilingOrSubmitting}>
+                    {/* <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 rounded-lg" /> */}
+                    <div className=" border-l-2 border-[#2c2c2c] rounded-r-sm w-full h-full text-center hover:bg-[#131313] transition duration-200 text-white bg-[#1b1a1a] flex items-center justify-center">
                         Submit
                     </div>
                 </button>

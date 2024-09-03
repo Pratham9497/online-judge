@@ -60,12 +60,12 @@ const ProblemDetails = ({ problem, author, tab }: Props) => {
         }
     }, [problem.id, submissions])
     return (
-        <ScrollArea className="shadcn-scrollbar h-full rounded-md border p-4">
+        <ScrollArea className="border-[#1b1a1a] shadcn-scrollbar bg-[#131313] h-full rounded-md border-2 p-4">
             <Tabs defaultValue={tab || "problem"} className="w-full">
                 <TabsList className={`grid w-full ${(session && session.user) ? 'grid-cols-3' : 'grid-cols-2'}`}>
-                    <TabsTrigger value="problem" className="text-xs sm:text-sm md:text-xs lg:text-sm">Problem</TabsTrigger>
-                    {session && session.user && <TabsTrigger onClick={handleSubmissionClick} value="submissions" className="text-xs sm:text-sm md:text-xs lg:text-sm">Submissions</TabsTrigger>}
-                    <TabsTrigger value="editorial" className="text-xs sm:text-sm md:text-xs lg:text-sm">Editorial</TabsTrigger>
+                    <TabsTrigger value="problem" className="text-xs sm:text-sm md:text-xs lg:text-base">Problem</TabsTrigger>
+                    {session && session.user && <TabsTrigger onClick={handleSubmissionClick} value="submissions" className="text-xs sm:text-sm md:text-xs lg:text-base">Submissions</TabsTrigger>}
+                    <TabsTrigger value="editorial" className="text-xs sm:text-sm md:text-xs lg:text-base">Editorial</TabsTrigger>
                 </TabsList>
                 <TabsContent value="problem">
                     <div className='h-full px-3 flex flex-col items-left justify-start gap-7 pb-2 overflow-y-auto'>
@@ -81,22 +81,16 @@ const ProblemDetails = ({ problem, author, tab }: Props) => {
                         <div className='flex flex-col items-left justify-center gap-2'>
                             <h2 className='text-2xl font-semibold'>Problem Statement: </h2>
                             <div className='text-base flex flex-col items-left justify-center gap-3'>
-                                {/* {problem.statement.split('\n').map((line, idx) => ( */}
                                     <div 
-                                        // key={idx} 
-                                        className='leading-6 tiptap' 
-                                        dangerouslySetInnerHTML={{ __html: problem.statement }} />
-                                {/* ))} */}
+                                        className='leading-6 tiptap text-[#cfcbcb]' 
+                                        dangerouslySetInnerHTML={{ __html: problem.statement }} 
+                                    />
                             </div>
                         </div>
                         <div className='flex flex-col items-left justify-center gap-2'>
                             <h2 className='text-2xl font-semibold'>Constraints: </h2>
                             <div className='text-base'>
-                                {/* <ul className=' list-disc flex flex-col items-left justify-center gap-1 pl-2'> */}
-                                    {/* {problem.constraints.split('\n').map((line, idx) => ( */}
-                                        <div className=' tiptap' dangerouslySetInnerHTML={{ __html: problem.constraints }} />
-                                    {/* ))} */}
-                                {/* </ul> */}
+                                <div className=' tiptap text-[#cfcbcb]' dangerouslySetInnerHTML={{ __html: problem.constraints }} />
                             </div>
                         </div>
                         <div className='flex flex-col items-left justify-center gap-2'>
@@ -104,7 +98,7 @@ const ProblemDetails = ({ problem, author, tab }: Props) => {
                             <div className='text-lg'>
                                 <ul className=' list-none flex flex-col items-left justify-center gap-3'>
                                     {problem.sampleTestcases.map((tc, idx) => (
-                                        <li key={idx} className='flex flex-col items-left justify-center border-[2px] border-slate-600 bg-black-200 text-white-100 leading-8 rounded-xl p-3 gap-2'>
+                                        <li key={idx} className='flex flex-col items-left justify-center bg-[#191919] text-[#d5cbcb] leading-8 rounded-xl p-3 gap-2'>
                                             <div className='text-xl font-semibold'>
                                                 TestCase {idx + 1}:
                                             </div>
@@ -112,7 +106,7 @@ const ProblemDetails = ({ problem, author, tab }: Props) => {
                                                 <div className='text-lg'>
                                                     Input:
                                                 </div>
-                                                <div className='py-2 px-3 bg-black-300 border-[2px] border-black-200 text-slate-500 rounded-lg'>
+                                                <div className='py-2 px-3 bg-[#2b2929] border-black-200 text-[#c8c8c8] rounded-lg'>
                                                     {tc.input.split('\n').map((inp, i) => (
                                                         <div key={i} className='leading-7'>
                                                             {inp}
@@ -124,7 +118,7 @@ const ProblemDetails = ({ problem, author, tab }: Props) => {
                                                 <div className='text-lg'>
                                                     Output:
                                                 </div>
-                                                <div className='py-2 px-3 bg-black-300 border-[2px] border-black-200 text-slate-500 rounded-lg'>
+                                                <div className='py-2 px-3 bg-[#2b2929] border-black-200 text-[#c8c8c8] rounded-lg'>
                                                     {tc.expectedOutput.split('\n').map((op, i) => (
                                                         <div key={i} className='leading-7'>
                                                             {op}

@@ -25,14 +25,14 @@ const ProfileToggle = ({username}: {username: string | undefined}) => {
 
     return (
         <div className="relative flex items-center justify-center w-10 h-10" ref={dropdownRef}>
-            <span className={`w-10 h-10 flex items-center justify-center rounded-full border-[2px] cursor-pointer inset-x-0 ${isOpen ? " border-blue-500 text-purple" : "border-slate-300"}`} onClick={toggleDropdown}>
+            <span className={`w-10 h-10 flex items-center justify-center rounded-full border-[2px] cursor-pointer inset-x-0 ${isOpen ? " border-blue-500 text-blue-500" : "border-slate-300"}`} onClick={toggleDropdown}>
                 <span className='text-lg'>
                     {username ? username[0].toUpperCase() : ""}
                 </span>
             </span>
             {
                 isOpen && 
-                <ul className={`absolute top-10 min-w-32 bg-black-200 -right-[50%] mt-2 border border-gray-200 rounded-md shadow-lg z-10 ${isOpen ? 'animate-slide-down' : 'animate-slide-up'}`}>
+                <ul className={`absolute top-10 min-w-32 bg-[#1e1d1d] -right-[50%] mt-2 border border-gray-200 rounded-md shadow-lg z-10 ${isOpen ? 'animate-slide-down' : 'animate-slide-up'}`}>
                     <li className='px-4 py-2 flex flex-col'>
                         <div className=' italic'>Hey</div>
                         <div className='text-purple text-lg'>{username}</div>

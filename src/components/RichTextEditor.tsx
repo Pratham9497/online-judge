@@ -188,7 +188,7 @@ const RichTextEditor = ({ value, onChange, disabled }: Props) => {
                         </button>
                     </div>
                 </BubbleMenu>}
-                <EditorContent spellCheck={false} editor={editor} className="w-full rounded-md disabled:opacity-50 dark:border-zinc-800 dark:bg-slate-800 dark:ring-offset-zinc-950 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300" />
+                <EditorContent spellCheck={false} editor={editor} className="w-full rounded-md disabled:opacity-50 dark:border-[#2d2d2d] border-[3px] dark:bg-[#1b1a1a] dark:ring-offset-zinc-950 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300" />
             </div>
         </div>
         // </div>

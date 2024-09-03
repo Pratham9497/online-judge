@@ -18,12 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" style={{backgroundColor: "#0e0e0e"}}>
       <head>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6624136238256035"
      crossOrigin="anonymous"></script>
       </head>
-      <body className={`${inter.className} bg-dark-gradient-3 min-h-[81vh]`}>
+      <body className={`${inter.className} min-h-[81vh] bg-[#0e0e0e]`}>
         <AuthProvider>
           <ThemeProvider
             attribute="class"

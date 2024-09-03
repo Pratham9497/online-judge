@@ -53,7 +53,7 @@ import {
           <div className="flex items-center space-x-2">
             <Button
               variant="outline"
-              className="hidden h-8 w-8 p-0 lg:flex"
+              className="hidden h-8 w-8 p-0 lg:flex bg-[#2b2929] border-none hover:bg-[#363434]"
               onClick={() => table.setPageIndex(0)}
               disabled={!table.getCanPreviousPage()}
             >
@@ -62,7 +62,7 @@ import {
             </Button>
             <Button
               variant="outline"
-              className="h-8 w-8 p-0"
+              className="h-8 w-8 p-0 bg-[#2b2929] border-none hover:bg-[#363434]"
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
             >
@@ -71,7 +71,7 @@ import {
             </Button>
             <Button
               variant="outline"
-              className="h-8 w-8 p-0"
+              className="h-8 w-8 p-0 bg-[#2b2929] border-none hover:bg-[#363434]"
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
             >
@@ -80,7 +80,7 @@ import {
             </Button>
             <Button
               variant="outline"
-              className="hidden h-8 w-8 p-0 lg:flex"
+              className="hidden h-8 w-8 p-0 lg:flex bg-[#2b2929] border-none hover:bg-[#363434]"
               onClick={() => table.setPageIndex(table.getPageCount() - 1)}
               disabled={!table.getCanNextPage()}
             >

@@ -16,11 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <div className="w-full h-full">
       <Navbar />
-      <div className="w-full h-full mt-32">
-        {children}
+      <div className="w-full h-full">
+        <div className="w-full h-full mt-[74px]">
+          {children}
+        </div>
       </div>
-    </>
+    </div>
   );
 }

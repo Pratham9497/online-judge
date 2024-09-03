@@ -33,7 +33,7 @@ const ProblemDes = ({ problem, author, tab }: Props) => {
     const windowSize = useWindowSize();
 
     return (
-        <main className='flex md:flex-row gap-4 flex-col w-full md:h-[81vh] h-full text-white px-4'>
+        <main className='flex md:flex-row gap-4 flex-col w-full md:h-[88vh] h-full text-white px-1'>
             {windowSize.width && windowSize.width >= 768 && <ResizablePanelGroup direction="horizontal">
                 <ResizablePanel defaultSize={40} minSize={35} className="h-full">
                     <ProblemDetails author={author} problem={problem} tab={tab} />
